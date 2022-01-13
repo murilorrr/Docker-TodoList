@@ -1,1 +1,1 @@
-docker start -i 01container
+docker start -it 01container
