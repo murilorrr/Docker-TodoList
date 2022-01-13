@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  todotests:
+    restart: always
+    build: ./todo-app/tests
+    environment:
+      - FRONT_HOST=todofront
+    depends_on:
+      - todofront
+      - todoback
+
+  todofront:
+    depends_on:
+      - todoback
+    build: ./todo-app/front-end
+    restart: always
+    environment:
+      - REACT_APP_API_HOST=todofront
+
+  todoback:
+    restart: always
+    build: ./todo-app/back-end
+
